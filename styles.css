@@ -1,0 +1,603 @@
+
+/* ========================================
+   1. GLOBAL SETTINGS
+======================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+:root {
+    --navy: #34495E;
+    --white: #FFFFFF;
+    --light-gray: #E9EDF0;
+    --orange: #F07824;
+    --text: #263442;
+    --muted: #5D6872;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    color: var(--text);
+    background: var(--white);
+}
+
+
+/* ========================================
+   2. FIXED NAVIGATION
+======================================== */
+
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 76px;
+    padding: 0 7%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    background: var(--white);
+    border-bottom: 1px solid var(--light-gray);
+
+    z-index: 1000;
+    transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.navbar.scrolled {
+    background: var(--navy);
+    border-bottom-color: transparent;
+}
+
+.navbar.scrolled .logo,
+.navbar.scrolled .nav-links a {
+    color: var(--white);
+}
+
+.logo {
+    color: var(--navy);
+    font-size: 21px;
+    font-weight: 800;
+    letter-spacing: -1px;
+    text-decoration: none;
+}
+
+.logo span {
+    color: var(--orange);
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+}
+
+.nav-links a {
+    color: var(--navy);
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+.nav-links a:hover {
+    color: var(--orange);
+}
+
+
+/* ========================================
+   3. COMMON SECTIONS
+======================================== */
+
+.section {
+    position: relative;
+    min-height: 100vh;
+    padding: 120px 10% 70px;
+
+    display: flex;
+    align-items: center;
+}
+
+.section-content {
+    width: 100%;
+    max-width: 900px;
+}
+
+.eyebrow {
+    color: var(--orange);
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    line-height: 1.6;
+    margin-bottom: 24px;
+}
+
+h1,
+h2 {
+    font-size: clamp(38px, 5vw, 64px);
+    line-height: 1.12;
+    letter-spacing: -2px;
+    margin-bottom: 28px;
+    color: var(--navy);
+}
+
+.section-description {
+    max-width: 650px;
+    color: var(--muted);
+    font-size: 18px;
+    line-height: 1.8;
+}
+
+
+/* ========================================
+   4. BUTTONS
+======================================== */
+
+.button {
+    display: inline-block;
+    padding: 16px 24px;
+    margin-top: 32px;
+
+    background: var(--orange);
+    color: var(--white);
+
+    font-size: 14px;
+    font-weight: 700;
+    text-decoration: none;
+
+    transition:
+        background 0.2s ease,
+        transform 0.2s ease;
+}
+
+.button:hover {
+    background: #C95D16;
+    transform: translateY(-2px);
+}
+
+
+/* ========================================
+   5. SECTION 1 — HERO BACKGROUND
+======================================== */
+
+.hero {
+    isolation: isolate;
+    overflow: hidden;
+    background: var(--navy);
+}
+
+/* Background video */
+
+.hero-video {
+    position: absolute;
+    inset: 0;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    filter: blur(4px);
+    transform: scale(1.04);
+
+    z-index: -2;
+}
+
+/* Blue-grey overlay */
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+
+    background: rgba(52, 73, 94, 0.58);
+
+    z-index: -1;
+}
+
+
+/* ========================================
+   6. HERO — TWO COLUMNS
+======================================== */
+
+.hero-layout {
+    position: relative;
+    z-index: 1;
+
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 50px;
+}
+
+/* LEFT COLUMN: CHARACTERS */
+
+.hero-characters {
+    position: relative;
+
+    width: 100%;
+    max-width: 520px;
+    height: min(65vh, 600px);
+    min-height: 360px;
+
+    margin: 0 auto;
+}
+
+/* Every character occupies the same area */
+
+.character {
+    position: absolute;
+    inset: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    opacity: 0;
+    visibility: hidden;
+
+    /*transition: opacity 1.2s ease-in-out;*/
+    pointer-events: none;
+}
+
+/* Visible character */
+
+.character.active {
+    opacity: 1;
+    visibility: visible;
+    transform-origin: center;
+    animation: shake 3s step-end infinite;
+}
+
+.character.active > .character-frame {
+    animation: shake2 3s step-end infinite;;
+}
+
+@keyframes shake {
+    0% {
+        transform: rotate(-7deg) scale(110%);
+    }
+    16% {
+        transform: rotate(3deg) scale(100%);
+    }
+    33% {
+        transform: rotate(5deg) scale(105%);
+    }
+    50% {
+        transform: rotate(0deg) scale(110%);
+    }
+    66% {
+        transform: rotate(-5deg) scale(100%);
+    }
+    83% {
+        transform: rotate(3deg) scale(95%);
+    }
+    100% {
+        transform: rotate(0deg) scale(100%);
+    }
+}
+
+@keyframes shake2 {
+    0% {
+        transform: rotate(5deg) scale(105%);
+    }
+    16% {
+        transform: rotate(0deg) scale(110%);
+    }
+    33% {
+        transform: rotate(-5deg) scale(100%);
+    }
+    50% {
+        transform: rotate(3deg) scale(95%);
+    }
+    66% {
+        transform: rotate(0deg) scale(100%);
+    }
+    83% {
+        transform: rotate(-7deg) scale(110%);
+    }
+    100% {
+        transform: rotate(3deg) scale(100%);
+    }
+}
+
+/* Paper frame behind the character */
+
+.character-frame {
+    position: absolute;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+
+    z-index: 1;
+    pointer-events: none;
+    user-select: none;
+}
+
+/* Character PNG above the frame */
+
+.character-image {
+    position: absolute;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+
+    z-index: 2;
+    pointer-events: none;
+    user-select: none;
+}
+
+/*
+   FUTURE IDLE ANIMATIONS:
+   Add animation to .character-image or use
+   a separate wrapper inside each .character.
+   Avoid animating .character opacity here.
+*/
+
+
+/* RIGHT COLUMN: TEXT */
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+}
+
+.hero h1 {
+    color: var(--white);
+}
+
+.hero h1 span {
+    display: block;
+    color: var(--orange);
+}
+
+.hero .hero-description {
+    max-width: 600px;
+    color: var(--white);
+    font-size: 18px;
+    line-height: 1.8;
+}
+
+.hero-number {
+    position: absolute;
+    right: 7%;
+    bottom: 40px;
+
+    color: #FFFFFF;
+    font-size: 13px;
+    letter-spacing: 2px;
+
+    z-index: 2;
+}
+
+
+/* ========================================
+   7. SECTION 2 — ABOUT
+======================================== */
+
+.about {
+    background: var(--light-gray);
+}
+
+.about .section-content {
+    max-width: 900px;
+}
+
+.about .section-description {
+    margin-bottom: 24px;
+}
+
+.info-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 24px;
+
+    padding: 24px 0;
+    margin-top: 20px;
+
+    border-bottom: 1px solid #CBD3D9;
+}
+
+.card-number {
+    color: var(--orange);
+    font-size: 24px;
+    font-weight: 800;
+}
+
+.info-card h3 {
+    color: var(--navy);
+    font-size: 20px;
+    margin-bottom: 8px;
+}
+
+.info-card p {
+    color: var(--muted);
+    font-size: 16px;
+    line-height: 1.6;
+}
+
+
+/* ========================================
+   8. SECTION 3 — RESEARCH
+======================================== */
+
+.research {
+    background: var(--navy);
+}
+
+.research h2 {
+    color: var(--white);
+}
+
+.research .eyebrow {
+    color: #FFAB70;
+}
+
+.research .section-description {
+    color: #E0E6EB;
+}
+
+.research .hero-number {
+    color: #C1CCD5;
+}
+
+
+/* ========================================
+   9. TABLET
+======================================== */
+
+@media (max-width: 900px) {
+
+    .hero-layout {
+        gap: 28px;
+        grid-template-columns: 0.9fr 1.1fr;
+    }
+
+    .hero-characters {
+        height: 55vh;
+        min-height: 320px;
+    }
+
+    .hero h1 {
+        font-size: clamp(34px, 4.5vw, 48px);
+    }
+
+    .hero .hero-description {
+        font-size: 16px;
+    }
+}
+
+
+/* ========================================
+   10. MOBILE
+======================================== */
+
+@media (max-width: 700px) {
+
+    .navbar {
+        height: 68px;
+        padding: 0 5%;
+    }
+
+    .logo {
+        font-size: 17px;
+    }
+
+    .nav-links {
+        gap: 12px;
+    }
+
+    .nav-links a {
+        font-size: 11px;
+    }
+
+    .section {
+        padding: 105px 7% 70px;
+    }
+
+    /* Stack characters above text */
+
+    .hero-layout {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .hero-characters {
+        width: 100%;
+        max-width: 380px;
+        height: 38vh;
+        min-height: 250px;
+        max-height: 360px;
+    }
+
+    .hero-content {
+        max-width: 600px;
+    }
+
+    h1,
+    h2 {
+        font-size: clamp(34px, 7vw, 48px);
+        letter-spacing: -1px;
+    }
+
+    .hero .hero-description,
+    .section-description {
+        font-size: 16px;
+    }
+
+    .info-card {
+        gap: 16px;
+    }
+
+    .hero-number {
+        right: 7%;
+        bottom: 20px;
+    }
+}
+
+
+/* ========================================
+   11. SMALL MOBILE SCREENS
+======================================== */
+
+@media (max-width: 420px) {
+
+    .navbar {
+        padding: 0 4%;
+    }
+
+    .logo {
+        font-size: 13px;
+        letter-spacing: -0.5px;
+    }
+
+    .nav-links {
+        gap: 8px;
+    }
+
+    .nav-links a {
+        font-size: 10px;
+    }
+
+    .section {
+        padding-left: 6%;
+        padding-right: 6%;
+    }
+
+    .hero-characters {
+        height: 32vh;
+        min-height: 220px;
+    }
+
+    .hero-number {
+        right: 6%;
+        bottom: 15px;
+    }
+}
+
+
+/* ========================================
+   12. ACCESSIBILITY
+======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+        transition: none !important;
+    }
+}

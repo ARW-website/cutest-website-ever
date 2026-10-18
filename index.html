@@ -1,0 +1,227 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Platform Rights — Защита прав работников</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- NAVIGATION -->
+    <nav class="navbar">
+        <a href="#home" class="logo">
+            PLATFORM<span>RIGHTS</span>
+        </a>
+
+        <div class="nav-links">
+            <a href="#home">Главная</a>
+            <a href="#about">О проекте</a>
+            <a href="#research">Исследования</a>
+        </div>
+    </nav>
+
+
+    <!-- SECTION 1: HERO -->
+    <section id="home" class="section hero">
+
+        <!-- Background video -->
+        <video class="hero-video"
+               autoplay
+               muted
+               loop
+               playsinline
+               preload="metadata">
+            <source src="src/BGvid.mp4" type="video/mp4">
+        </video>
+
+        <div class="hero-overlay"></div>
+
+
+        <!-- Two-column layout -->
+        <div class="hero-layout">
+
+            <!-- RIGHT: TEXT CONTENT -->
+            <div class="hero-content">
+                <p class="eyebrow">
+                    ПРАВО · ТРУД · ЦИФРОВАЯ ЭКОНОМИКА
+                </p>
+
+                <h1>
+                    Платформенная занятость.
+                    <span>Право на защиту.</span>
+                </h1>
+
+                <p class="hero-description">
+                    Изучаем правовой статус работников цифровых платформ,
+                    их трудовые права и социальные гарантии.
+                </p>
+
+                <a href="#about" class="button">
+                    Узнать больше →
+                </a>
+            </div>
+
+            <!-- RIGHT: ANIMATED CHARACTERS -->
+            <div class="hero-characters">
+
+                <!-- Character 1 -->
+                <div class="character active" data-character="0">
+                    <img
+                        class="character-frame"
+                        src="src/hero1-1.png"
+                        alt=""
+                    >
+                    <img
+                        class="character-image"
+                        src="src/hero1-2.png"
+                        alt="Первый герой"
+                    >
+                </div>
+
+                <!-- Character 2 -->
+                <div class="character" data-character="1">
+                    <img
+                        class="character-frame"
+                        src="src/hero2-1.png"
+                        alt=""
+                    >
+                    <img
+                        class="character-image"
+                        src="src/hero2-2.png"
+                        alt="Второй герой"
+                    >
+                </div>
+
+                <!-- Character 3 -->
+                <div class="character" data-character="2">
+                    <img
+                        class="character-frame"
+                        src="src/hero3-1.png"
+                        alt=""
+                    >
+                    <img
+                        class="character-image"
+                        src="src/hero3-2.png"
+                        alt="Третий герой"
+                    >
+                </div>
+
+            </div>
+        </div>
+
+        <div class="hero-number">01 / 03</div>
+
+    </section>
+
+
+    <!-- SECTION 2: ABOUT -->
+    <section id="about" class="section about">
+
+        <div class="section-content">
+
+            <p class="eyebrow">01 — О ПРОЕКТЕ</p>
+
+            <h2>
+                Работа меняется.<br>
+                А что насчёт закона?
+            </h2>
+
+            <p class="section-description">
+                Цифровые платформы меняют способы организации труда.
+                Курьеры, водители и другие исполнители получают заказы
+                через приложения, но их правовой статус не всегда
+                обеспечивает достаточную защиту.
+            </p>
+
+            <div class="info-card">
+                <span class="card-number">01</span>
+                <div>
+                    <h3>Правовой статус</h3>
+                    <p>
+                        Когда исполнитель может считаться работником?
+                    </p>
+                </div>
+            </div>
+
+            <div class="info-card">
+                <span class="card-number">02</span>
+                <div>
+                    <h3>Социальные гарантии</h3>
+                    <p>
+                        Как обеспечиваются доход, пенсия и защита прав?
+                    </p>
+                </div>
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- SECTION 3: RESEARCH -->
+    <section id="research" class="section research">
+
+        <div class="section-content">
+
+            <p class="eyebrow">02 — ИССЛЕДОВАНИЯ</p>
+
+            <h2>
+                Разбираемся в праве,
+                <br>которое касается каждого.
+            </h2>
+
+            <p class="section-description">
+                Анализируем законодательство Казахстана, судебную
+                практику и влияние цифровых платформ на права исполнителей.
+            </p>
+
+            <a href="#home" class="button">
+                Вернуться наверх ↑
+            </a>
+
+        </div>
+
+        <div class="hero-number">03 / 03</div>
+
+    </section>
+
+
+    <!-- CHARACTER SWITCHING -->
+    <script>
+        const characters = document.querySelectorAll(".character");
+
+        let currentCharacter = 0;
+        const switchInterval = 5000;
+
+        function switchCharacter() {
+            characters[currentCharacter].classList.remove("active");
+
+            currentCharacter = (currentCharacter + 1) % characters.length;
+
+            characters[currentCharacter].classList.add("active");
+        }
+
+        setInterval(switchCharacter, switchInterval);
+
+
+
+        const navbar = document.querySelector('.navbar');
+        const hero = document.querySelector('.hero');
+        const navHeight = navbar.offsetHeight;
+
+        const observer = new IntersectionObserver(([entry]) => {
+            // Hero полностью ушёл выше линии навбара
+            const passedHero = !entry.isIntersecting && entry.boundingClientRect.bottom < navHeight;
+            navbar.classList.toggle('scrolled', passedHero);
+        }, {
+            // Верхняя граница зоны наблюдения опущена на высоту навбара
+            rootMargin: `-${navHeight}px 0px 0px 0px`
+        });
+
+        observer.observe(hero);
+    </script>
+
+</body>
+</html>
