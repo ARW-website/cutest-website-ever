@@ -1,3 +1,13 @@
+@font-face {
+    font-family: Playfair;
+    src: url('PlayfairDisplay-VariableFont_wght.ttf');
+}
+
+@font-face {
+    font-family: Bookmania;
+    src: url('7119.ttf');
+}
+
 
 /* ========================================
    1. GLOBAL SETTINGS
@@ -358,10 +368,13 @@ h2 {
     color: var(--white);
 }
 
-.hero h1 span {
+.big-span {
     display: block;
     color: var(--orange);
+    font-family: Bookmania;
+    margin-top: -25px;
 }
+
 
 .hero .hero-description {
     max-width: 600px;
@@ -381,6 +394,156 @@ h2 {
 
     z-index: 2;
 }
+
+
+/* Основной контейнер */
+.disclaimer-animation {
+    --orbit-radius: 105px;
+
+    position: relative;
+    width: 300px;
+    height: 300px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    
+}
+
+/* Прозрачный круглый PNG */
+.disclaimer-circle {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+
+    object-fit: contain;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Центральная плашка */
+.disclaimer-label {
+    position: relative;
+    z-index: 3;
+
+    padding: 13px 19px;
+
+    color: #FFFFFF;
+
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    white-space: nowrap;
+}
+
+/* Общая вращающаяся орбита */
+.arrow-orbit {
+    position: absolute;
+    inset: 0;
+
+    z-index: 2;
+    pointer-events: none;
+
+    animation: orbit-rotation 18s linear infinite;
+}
+
+/* Положение каждой стрелки на орбите */
+.arrow-position {
+    position: absolute;
+    top: 46%;
+    left: 50%;
+
+    width: 0;
+    height: 0;
+
+    transform: rotate(var(--angle));
+}
+
+/* Стрелка по умолчанию направлена внутрь */
+.orbit-arrow {
+    position: absolute;
+
+    top: calc(-1.5 * var(--orbit-radius));
+    left: 0;
+
+    width: 100px;
+    height: 100px;
+
+    object-fit: contain;
+
+    transform:
+        translate(-50%, -50%)
+        rotate(90deg)
+        translateX(0);
+
+    animation: arrow-pulse 1.4s ease-in-out infinite;
+}
+
+/* Все пять стрелок вращаются вместе */
+@keyframes orbit-rotation {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(0deg);
+    }
+}
+
+/* Стрелка движется к плашке и обратно */
+@keyframes arrow-pulse {
+    0%, 100% {
+        transform:
+            translate(-50%, -50%)
+            rotate(90deg)
+            translateX(0);
+    }
+
+    50% {
+        transform:
+            translate(-50%, -50%)
+            rotate(90deg)
+            translateX(20px);
+    }
+}
+
+/* Адаптация для телефонов */
+@media (max-width: 700px) {
+    .disclaimer-animation {
+        --orbit-radius: 85px;
+
+        width: 250px;
+        height: 100px;
+        margin: 25px auto;
+    }
+
+    .disclaimer-circle {
+        width: 200px;
+        height: 160px;
+    }
+
+    .disclaimer-label {
+        padding: 11px 14px;
+        font-size: 28px;
+    }
+
+    .orbit-arrow {
+        width: 70px;
+        height: 70px;
+        opacity: 0;
+    }
+}
+
+/* Учитываем настройку уменьшения анимации */
+@media (prefers-reduced-motion: reduce) {
+    .arrow-orbit,
+    .orbit-arrow {
+        animation: none;
+    }
+}
+
 
 
 /* ========================================
@@ -600,4 +763,4 @@ h2 {
         scroll-behavior: auto !important;
         transition: none !important;
     }
-}
+}}
