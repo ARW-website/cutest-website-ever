@@ -1,0 +1,491 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Platform Rights — Защита прав работников</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="bg-static"></div>
+    <div class="bg-staticline"></div>
+
+    <!-- NAVIGATION -->
+    <nav class="navbar">
+        <a href="#home" class="logo">
+            PLATFORM<span>RIGHTS</span>
+        </a>
+
+        <div class="nav-links">
+            <a href="#home">PLATFORM WORKERS</a>
+            <a href="#about">PLATFORMS</a>
+            <a href="#research">LEGISLATORS</a>
+        </div>
+    </nav>
+
+
+    <!-- SECTION 1: HERO -->
+    <section id="home" class="section hero">
+
+        <!--Background video -->
+        <video class="hero-video"
+               autoplay
+               muted
+               loop
+               playsinline
+               preload="metadata">
+            <source src="BGvid3.mp4" type="video/mp4">
+        </video>
+
+        <div class="hero-overlay"></div>
+
+
+        <!-- Two-column layout -->
+        <div class="hero-layout">
+
+            <!-- RIGHT: TEXT CONTENT -->
+            <div class="hero-content">
+                <!--<p class="eyebrow">
+                    RIGHTS · LABOR · DIGITAL ECONOMICS
+                </p>-->
+
+                <h1>
+                    What's with
+                    <span class="big-span">Platform Employment</span>
+                    in Kazakhstan?
+                </h1>
+
+                <!--<p class="hero-description">
+                    An <span style="color: var(--orange); font-size: 19px; font-family: Bookmania; text-shadow: 1px 1px var(--navy);">in-depth</span> analysis of <span style="color: var(--orange); font-size: 19px; font-family: Bookmania; text-shadow: 1px 1px var(--navy);">platform employment</span> in Kazakhstan. Forum for people with stakes in this topic and independent legal commentary.
+                </p>-->
+
+                
+                <div class="disclaimer-animation">
+
+                    <!-- Прозрачная круглая рамка -->
+                    <img
+                        class="disclaimer-circle"
+                        src="circle-outline.png"
+                        alt=""
+                    >
+
+                    <!-- Центральная плашка -->
+                    <div class="disclaimer-label">
+                        THIS IS NOT<br>
+                        LEGAL ADVICE
+                    </div>
+
+                    <!-- Орбита с пятью стрелками -->
+                    <div class="arrow-orbit">
+
+                        <div class="arrow-position" style="--angle: 80deg;">
+                            <img class="orbit-arrow arrow2" src="bluearrow.png" alt="">
+                        </div>
+
+                        <div class="arrow-position" style="--angle: 216deg;">
+                            <img class="orbit-arrow arrow4" src="yellowarrow.png" alt="">
+                        </div>
+
+                        <div class="arrow-position" style="--angle: 288deg;">
+                            <img class="orbit-arrow arrow5" src="redarrow.png" alt="">
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- RIGHT: ANIMATED CHARACTERS -->
+            <div class="hero-characters">
+
+                <div class="map-container">
+                    <img class="hands" src="hands.png">
+                    <img class="hands screenhands" src="handsscreen.png">
+                    <svg
+                        id="metro-map"
+                        viewBox="0 0 667 1000"
+                        xmlns="http://www.w3.org/2000/svg"
+                        preserveAspectRatio="none"
+                        role="img"
+                        aria-label="Vertical metro map with three animated routes"
+                    >
+                        <!-- RED ROUTE -->
+                        <path
+                            id="red-route"
+                            class="route route-red"
+                            d="M 105,170
+                            L 105,385
+                            L 420,385
+                            L 420,565
+                            L 505,565
+                            L 505,635
+                            L 610,635"
+                        />
+
+                        <!-- YELLOW ROUTE -->
+                        <path
+                            id="yellow-route"
+                            class="route route-yellow"
+                            d="M 330,90
+                            L 330,275
+                            L 255,275
+                            L 255,505
+                            L 330,505
+                            L 330,910"
+                        />
+
+                        <!-- BLUE ROUTE -->
+                        <path
+                            id="blue-route"
+                            class="route route-blue"
+                            d="M 565,155
+                            L 520,155
+                            L 520,345
+                            L 300,345
+                            L 300,640
+                            L 180,640
+                            L 180,815
+                            L 65,815"
+                        />
+
+                        <!-- END STATIONS -->
+                        <g class="stations">
+                            <circle cx="105" cy="170" r="15" class="station red-station"/>
+                            <circle cx="610" cy="635" r="15" class="station red-station"/>
+
+                            <circle cx="330" cy="90" r="15" class="station yellow-station"/>
+                            <circle cx="330" cy="910" r="15" class="station yellow-station"/>
+
+                            <circle cx="565" cy="155" r="15" class="station blue-station"/>
+                            <circle cx="65" cy="815" r="15" class="station blue-station"/>
+                        </g>
+
+                        <!-- INTERCHANGE STATIONS -->
+                        <g class="stations">
+                            <circle cx="255" cy="385" r="9" class="interchange"/>
+                            <circle cx="420" cy="345" r="9" class="interchange"/>
+                            <circle cx="300" cy="640" r="9" class="interchange"/>
+                        </g>
+
+                        <!-- RED SHADOW AND CHARACTER -->
+                        <foreignObject id="red-shadow" x="0" y="0" width="1" height="1">
+                            <div xmlns="http://www.w3.org/1999/xhtml"
+                                class="moving-shadow shadow-red"></div>
+                        </foreignObject>
+
+                        <foreignObject id="red-character" x="0" y="0" width="1" height="1">
+                            <div xmlns="http://www.w3.org/1999/xhtml"
+                                class="moving-character character-red"></div>
+                        </foreignObject>
+
+                        <!-- YELLOW SHADOW AND CHARACTER -->
+                        <foreignObject id="yellow-shadow" x="0" y="0" width="1" height="1">
+                            <div xmlns="http://www.w3.org/1999/xhtml"
+                                class="moving-shadow shadow-yellow"></div>
+                        </foreignObject>
+
+                        <foreignObject id="yellow-character" x="0" y="0" width="1" height="1">
+                            <div xmlns="http://www.w3.org/1999/xhtml"
+                                class="moving-character character-yellow"></div>
+                        </foreignObject>
+
+                        <!-- BLUE SHADOW AND CHARACTER -->
+                        <foreignObject id="blue-shadow" x="0" y="0" width="1" height="1">
+                            <div xmlns="http://www.w3.org/1999/xhtml"
+                                class="moving-shadow shadow-blue"></div>
+                        </foreignObject>
+
+                        <foreignObject id="blue-character" x="0" y="0" width="1" height="1">
+                            <div xmlns="http://www.w3.org/1999/xhtml"
+                                class="moving-character character-blue"></div>
+                        </foreignObject>
+                    </svg>
+
+
+            </div>
+
+                <!-- 
+                <div class="character active" data-character="0">
+                    <img
+                        class="character-frame"
+                        src="hero1-1.png"
+                        alt=""
+                    >
+                    <img
+                        class="character-image"
+                        src="hero1-2.png"
+                        alt="Первый герой"
+                    >
+                </div>
+
+                
+                <div class="character" data-character="1">
+                    <img
+                        class="character-frame"
+                        src="hero2-1.png"
+                        alt=""
+                    >
+                    <img
+                        class="character-image"
+                        src="hero2-2.png"
+                        alt="Второй герой"
+                    >
+                </div>
+
+                
+                <div class="character" data-character="2">
+                    <img
+                        class="character-frame"
+                        src="hero3-1.png"
+                        alt=""
+                    >
+                    <img
+                        class="character-image"
+                        src="hero3-2.png"
+                        alt="Третий герой"
+                    >
+                </div>-->
+
+            </div>
+        </div>
+
+        <div class="hero-number">01 / 03</div>
+
+    </section>
+
+    
+    <section id="about" class="about-section">
+
+        <!-- Основной фон -->
+        <div class="about-background"></div>
+
+        <!-- Декоративные изображения по краям -->
+        <img
+            src="rainbow2.png"
+            alt=""
+            class="about-decoration about-decoration-left"
+        >
+
+        <img
+            src="rainbow1.png"
+            alt=""
+            class="about-decoration about-decoration-right"
+        >
+
+        <!-- Центральный текст -->
+        <div class="about-content">
+            <h2>
+                Are interests of all stakeholders of platform employment protected?
+                <span>Workers, platforms, and legislators share what they think.</span>
+            </h2>
+        </div>
+
+    </section>
+
+
+
+    <!-- SECTION 2.5: POSTS NAVIGATION -->
+    <section class="posts-nav" id="posts">
+
+        <div class="posts-nav-inner">
+
+            <!-- LEFT: POSTS -->
+            <div class="posts-main">
+
+                <p class="posts-kicker">PROJECT RESOURCES</p>
+
+                <article class="post-item">
+                    <div class="post-meta">
+                        <span class="post-label">INQUIRY ESSAY</span>
+                        <span class="post-label">#value</span>
+                        <span class="post-label">#definition</span>
+                        <span class="post-date">Oct 14</span>
+                        <span class="post-read">14-min read</span>
+                    </div>
+                    <h3 class="post-heading">Inquiry Essay</h3>
+                    <p class="post-excerpt">An inquiry essay examining competing views of Kazakh legal scholars on platform employment. Identifies key disagreements in value and definition stases. Does not offer any opinion, whoever thinks so will be failed.</p>
+                    <a href="#" class="post-link">Read →</a>
+                </article>
+
+                <article class="post-item">
+                    <div class="post-meta">
+                        <span class="post-label">ARGUMENTATIVE ESSAY</span>
+                        <span class="post-label">#A+ material</span>
+                        <span class="post-date">Dec 25</span>
+                        <span class="post-read">888 min</span>
+                    </div>
+                    <h3 class="post-heading">Argumentative Essay</h3>
+                    <p class="post-excerpt">An argumentative essay presenting the author's own ideas in... <br>...pay to know that haha.</p>
+                    <a href="#" class="post-link">Read →</a>
+                </article>
+
+                <article class="post-item">
+                    <div class="post-meta">
+                        <span class="post-label">LEGAL ARTICLES</span>
+                        <span class="post-date">May 1</span>
+                        <span class="post-read">a lot of min</span>
+                    </div>
+                    <h3 class="post-heading">Scholarly articles on platform employment</h3>
+                    <p class="post-excerpt">Which I definetely read.</p>
+                    <a href="#" class="post-link">Don't read →</a>
+                </article>
+
+            </div>
+
+            <!-- RIGHT: TOPICS + PLACEHOLDER -->
+            <aside class="posts-side">
+
+                <div class="side-block">
+                    <p class="side-label">TOPICS</p>
+                    <div class="tag-cloud">
+                        <a href="#" class="topic-tag">#collective-voice</a>
+                        <a href="#" class="topic-tag">#income-stability</a>
+                        <a href="#" class="topic-tag">#retirement-security</a>
+                        <a href="#" class="topic-tag">#platform-work</a>
+                        <a href="#" class="topic-tag">#labour-law</a>
+                    </div>
+                </div>
+
+                <div class="side-block side-note">
+                    <p class="side-label">DUMMY</p>
+                    <p class="side-text">Placeholder: lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.</p>
+                </div>
+
+                <!--<div class="nametag-side">
+                    <img
+                        class="name-image"
+                        src="name-label.png"
+                    >
+                    <img
+                        class="name-shadow"
+                        src="name-shadow.png"
+                    >
+                </div>-->
+
+            </aside>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- CHARACTER SWITCHING -->
+    <script>
+        const characters = document.querySelectorAll(".character");
+
+        let currentCharacter = 0;
+        const switchInterval = 5000;
+
+        function switchCharacter() {
+            characters[currentCharacter].classList.remove("active");
+
+            currentCharacter = (currentCharacter + 1) % characters.length;
+
+            characters[currentCharacter].classList.add("active");
+        }
+
+        setInterval(switchCharacter, switchInterval);
+
+
+
+        const navbar = document.querySelector('.navbar');
+        const hero = document.querySelector('.hero');
+        const navHeight = navbar.offsetHeight;
+
+        const observer = new IntersectionObserver(([entry]) => {
+            // Hero полностью ушёл выше линии навбара
+            const passedHero = !entry.isIntersecting && entry.boundingClientRect.bottom < navHeight;
+            navbar.classList.toggle('scrolled', passedHero);
+        }, {
+            // Верхняя граница зоны наблюдения опущена на высоту навбара
+            rootMargin: `-${navHeight}px 0px 0px 0px`
+        });
+
+        observer.observe(hero);
+
+
+
+        
+        
+        
+        const CHARACTER_SIZE = 200;
+
+        const animations = [
+            {
+                pathId: 'red-route',
+                characterId: 'red-character',
+                shadowId: 'red-shadow',
+                duration: 9500,
+                offset: 0
+            },
+            {
+                pathId: 'yellow-route',
+                characterId: 'yellow-character',
+                shadowId: 'yellow-shadow',
+                duration: 11500,
+                offset: 0.34
+            },
+            {
+                pathId: 'blue-route',
+                characterId: 'blue-character',
+                shadowId: 'blue-shadow',
+                duration: 10500,
+                offset: 0.68
+            }
+        ];
+
+        const routes = animations.map(animation => {
+            const path = document.getElementById(animation.pathId);
+            const character = document.getElementById(animation.characterId);
+            const shadow = document.getElementById(animation.shadowId);
+
+            [shadow, character].forEach(element => {
+                element.setAttribute('width', CHARACTER_SIZE);
+                element.setAttribute('height', CHARACTER_SIZE);
+
+                const inner = element.querySelector('div');
+                inner.style.width = '100%';
+                inner.style.height = '100%';
+            });
+
+            return {
+                ...animation,
+                path,
+                character,
+                shadow,
+                length: path.getTotalLength()
+            };
+        });
+
+        function animate(time) {
+            routes.forEach(route => {
+                const progress =
+                    ((time % route.duration) / route.duration + route.offset) % 1;
+
+                const point = route.path.getPointAtLength(
+                    progress * route.length
+                );
+
+                const x = point.x - CHARACTER_SIZE / 2;
+                const y = point.y - CHARACTER_SIZE / 2;
+
+                route.shadow.setAttribute('x', x);
+                route.shadow.setAttribute('y', y);
+
+                route.character.setAttribute('x', x);
+                route.character.setAttribute('y', y);
+            });
+
+            requestAnimationFrame(animate);
+        }
+
+        requestAnimationFrame(animate);
+
+
+    </script>
+
+</body>
+</html>
