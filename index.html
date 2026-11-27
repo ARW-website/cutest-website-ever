@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PlatformRights — Platform Employment in Kazakhstan</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400;600;700;800;900;1000&display=swap');
+
+:root {
+    --blue: #2d749e;
+    --yellow: #ffb900;
+    --red: #ed4148;
+    --black: #080808;
+    --white: #ffffff;
+    --grey: #777777;
+    --page-scale: 1;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Nunito Sans', sans-serif;
+    background: var(--blue);
+    color: var(--black);
+    overflow-x: hidden;
+}
+
+/* NAVBAR */
+
+.navbar {
+    position: fixed;
+    z-index: 1000;
+    top: 18px;
+    left: 5%;
+    width: 90%;
+    height: 60px;
+
+    background: white;
+    border: 3px solid var(--black);
+    border-radius: 9px;
+    box-shadow: 5px 5px 0 var(--yellow);
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 18px;
+}
+
+.logo {
+    font-size: 25px;
+    font-weight: 1000;
+    letter-spacing: -1px;
+    transition: .5s;
+}
+
+.logo span {
+    color: var(--yellow);
+}
+
+.logo:hover {
+    color: var(--yellow);
+    font-size: 28px;
+}
+
+.logo:hover span {
+    color: var(--black);
+}
+
+.nav-links {
+    display: flex;
+    gap: 25px;
+}
+
+.nav-links a {
+    color: black;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 900;
+    transition: .2s;
+    align-self: center;
+}
+
+.nav-links a:hover {
+    color: var(--yellow);
+    font-size: 25px;
+    text-decoration: underline;
+}
+
+/* HERO */
+
+.hero {
+    position: relative;
+    height: 550px;
+    background: var(--blue);
+
+    display: flex;
+    align-items: flex-start;
+    padding: 95px 6% 45px;
+}
+
+
+.hero video {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    z-index: 0;
+    filter: blur(0.5px) brightness(0.8);
+}
+
+.hero h1 {
+    margin-top: 25px;
+    font-size: 70px;
+    line-height: 1.4;
+    font-weight: 1000;
+    letter-spacing: -1px;
+}
+
+/* YELLOW TEXT */
+
+.hero-yellow {
+    display: inline-block;
+    color: var(--yellow);
+    -webkit-text-stroke: 7px var(--black);
+    paint-order: stroke fill;
+    text-shadow: 10px 10px 0 var(--black);
+}
+
+/* PLATFORM EMPLOYMENT BOX */
+
+.hero-highlight {
+    display: inline-block;
+    background: white;
+    color: var(--black);
+
+    border: 4px solid var(--black);
+    border-radius: 10px;
+
+    padding: 0px 5px 2px;
+    box-shadow: 10px 10px 0 var(--yellow);
+
+    transform-origin: center;
+}
+
+/* HERO ANIMATION */
+
+.hero-step-1,
+.hero-step-2,
+.hero-step-3 {
+    animation: focusPulse 3s ease-in-out infinite;
+}
+
+.hero-step-1 {
+    animation-delay: -1s;
+}
+
+.hero-step-2 {
+    animation-delay: -0.5s;
+}
+
+.hero-step-3 {
+    animation-delay: 0s;
+}
+
+@keyframes focusPulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+
+    15% {
+        transform: scale(1.1);
+    }
+
+    30% {
+        transform: scale(1);
+    }
+}
+
+/* LEGAL DISCLAIMER */
+
+.legal-note {
+    display: block;
+    margin-top: 14px;
+
+    font-size: 27px;
+    font-weight: 1000;
+    color: var(--white);
+
+    -webkit-text-stroke: .6px var(--black);
+    paint-order: stroke fill;
+    text-shadow: 3px 3px 0 var(--black);
+    z-index: 10;
+    position: relative;
+}
+
+/* FORUM SECTION */
+
+.forum {
+    background-color: #fafafa;
+
+    background-image: radial-gradient(
+        #bdbdbd 1px,
+        transparent 1px
+    );
+
+    background-size: 10px 10px;
+
+    padding: 17px 5% 35px;
+}
+
+/* FORUM INTRO */
+
+.forum-intro {
+    text-align: center;
+    font-size: 34px;
+    line-height: 1.08;
+    font-weight: 1000;
+    color: var(--yellow);
+
+    -webkit-text-stroke: 4px var(--black);
+    paint-order: stroke fill;
+    text-shadow: 5px 5px 0 var(--black);
+
+    margin: 0 auto 50px;
+    max-width: 550px;
+}
+
+/* STAKEHOLDER CARDS */
+
+.stakeholder-grid {
+    display: flex;
+    justify-content: space-evenly;
+    gap: 17px;
+}
+
+.stakeholder-card {
+    position: relative;
+    background: white;
+
+    border: 3px solid var(--black);
+    border-radius: 9px;
+    box-shadow: 8px 8px 0 var(--yellow);
+
+    min-height: 250px;
+    width: 25%;
+    padding: 10px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    transform-origin: center;
+    animation: cardPulse 3s ease-in-out infinite;
+}
+
+.stakeholder-card:nth-child(1) {
+    animation-delay: -1s;
+}
+
+.stakeholder-card:nth-child(2) {
+    animation-delay: -0.5s;
+}
+
+.stakeholder-card:nth-child(3) {
+    animation-delay: 0s;
+}
+
+@keyframes cardPulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+
+    15% {
+        transform: scale(1.1);
+    }
+
+    30% {
+        transform: scale(1);
+    }
+}
+
+.stakeholder-card h2 {
+    font-size: 30px;
+    font-weight: 1000;
+    line-height: 1.05;
+    margin-bottom: 5px;
+}
+
+.stakeholder-card p {
+    font-size: 16px;
+    line-height: 1.05;
+    font-weight: 800;
+    color: #444;
+}
+
+/* CARD BUTTON */
+
+.card-button {
+    margin-top: auto;
+    margin-left: auto;
+
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    padding: 5px 8px;
+
+    background: var(--yellow);
+    border: 2px solid var(--black);
+    border-radius: 4px;
+    box-shadow: 3px 3px 0 var(--black);
+
+    color: black;
+    font-family: inherit;
+    font-size: 17px;
+    font-weight: 1000;
+
+    cursor: pointer;
+    transition: .2s;
+}
+
+.card-button:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 5px 5px 0 var(--black);
+}
+
+.card-button span {
+    font-size: 22px;
+    line-height: 15px;
+}
+
+/* PROJECT MATERIALS */
+
+.materials {
+    background: var(--blue);
+    padding: 13px 5% 65px;
+    position: relative;
+}
+
+.materials video {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+    z-index: 0;
+    filter: blur(0.5px) brightness(0.8);
+}
+
+.materials-heading {
+    text-align: center;
+    color: var(--yellow);
+    font-size: 29px;
+    font-weight: 1000;
+
+    -webkit-text-stroke: .8px var(--black);
+    paint-order: stroke fill;
+    text-shadow: 3px 3px 0 var(--black);
+    margin-bottom: 12px;
+}
+
+/* TWO COLUMNS */
+
+.materials-layout {
+    display: flex;
+    justify-self: center;
+    width: 80%;
+    justify-content: space-between;
+    position: relative;
+    z-index: 2;
+}
+
+/* LEFT COLUMN */
+
+.posts-column {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+}
+
+/* POST */
+
+.post {
+    background: white;
+    border: 3px solid var(--black);
+    border-radius: 9px;
+    box-shadow: 7px 7px 0 var(--black);
+
+    padding: 10px;
+    min-height: 175px;
+
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 24px;
+    transition: 0.5s;
+}
+
+.post:hover {
+    transform: scale(1.1);
+    box-shadow: 10px 10px 0 var(--yellow);
+}
+
+.post-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    color: var(--yellow);
+    font-size: 11px;
+    font-weight: 1000;
+}
+
+.post-time {
+    color: var(--grey);
+}
+
+.post h2 {
+    font-size: 29px;
+    line-height: 1.05;
+    font-weight: 1000;
+    margin: 3px 0;
+}
+
+.post-description {
+    font-size: 11px;
+    line-height: 1.15;
+    font-weight: 800;
+    color: #777;
+}
+
+/* POST FOOTER */
+
+.post-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    margin-top: auto;
+    padding-top: 8px;
+}
+
+.post-actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.reaction {
+    background: none;
+    border: none;
+    font-size: 23px;
+    cursor: pointer;
+    filter: grayscale(1);
+    transition: .2s;
+    width: 25px;
+}
+
+.reaction:hover {
+    transform: scale(1.15);
+}
+
+.reaction.active {
+    filter: none;
+    color: var(--red);
+}
+
+.comment-form {
+    display: flex;
+    width: 48%;
+}
+
+.comment-form input {
+    width: 100%;
+    min-width: 0;
+    border: none;
+    outline: none;
+    background: #d7d7d7;
+    border-radius: 20px;
+    padding: 6px 12px;
+
+    font-family: inherit;
+    font-size: 11px;
+    font-weight: 800;
+}
+
+.comment-form input:focus {
+    outline: 2px solid var(--yellow);
+}
+
+/* RIGHT COLUMN */
+
+.topics-column {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    width: 40%;
+}
+
+/* TOPICS */
+
+.topics-card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.topics-card h2 {
+    margin-top: 20px;
+    font-size: 40px;
+    font-weight: 1000;
+    color: var(--yellow);
+
+    -webkit-text-stroke: 5px var(--black);
+    paint-order: stroke fill;
+    text-shadow: 6px 6px 0 var(--black);
+
+    margin-bottom: 12px;
+}
+
+.poscolhed {
+    margin-top: 20px;
+    font-size: 40px;
+    font-weight: 1000;
+    color: var(--yellow);
+
+    -webkit-text-stroke: 5px var(--black);
+    paint-order: stroke fill;
+    text-shadow: 6px 6px 0 var(--black);
+
+    margin-bottom: 12px;
+}
+
+/* HASHTAGS */
+
+.hashtags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 9px 7px;
+    align-items: flex-start;
+}
+
+.hashtag {
+    display: inline-block;
+
+    background: var(--yellow);
+    border: 3px solid var(--black);
+    border-radius: 20px;
+
+    padding: 4px 9px;
+
+    box-shadow: 4px 4px 0 var(--black);
+
+    color: white;
+    font-size: 13px;
+    font-weight: 1000;
+
+    paint-order: stroke fill;
+
+    cursor: pointer;
+    transition: .2s;
+}
+
+.hashtag:hover {
+    transform: translateY(-3px);
+}
+
+/* DUMMY CARD */
+
+.dummy-card {
+    background: var(--yellow);
+
+    border: 4px solid var(--black);
+    border-radius: 12px;
+    box-shadow: 7px 7px 0 var(--black);
+
+    padding: 10px;
+    min-height: 320px;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.dummy-card h2 {
+    color: white;
+    font-size: 25px;
+    font-weight: 1000;
+    line-height: 1.1;
+    margin-bottom: 5px;
+}
+
+.dummy-card p {
+    color: white;
+    font-size: 13px;
+    font-weight: 900;
+    line-height: 1.15;
+}
+
+
+
+</style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<nav class="navbar">
+
+    <div class="logo">
+        PLATFORM<span>RIGHTS</span>
+    </div>
+
+    <div class="nav-links">
+        <a href="workers.html">PLATFORM WORKERS</a>
+        <a href="platforms.html">PLATFORMS</a>
+        <a href="legislators.html">LEGISLATORS</a>
+    </div>
+
+</nav>
+
+
+<!-- HERO -->
+
+<section class="hero">
+
+    <video autoplay muted loop src="bgvid.mp4"></video>
+
+    <div>
+
+        <h1>
+            <span class="hero-yellow hero-step-1">
+                What's with
+            </span>
+            <br>
+
+            <span class="hero-highlight hero-step-2">
+                Platform Employment
+            </span>
+            <br>
+
+            <span class="hero-yellow hero-step-3">
+                in Kazakhstan?
+            </span>
+        </h1>
+
+        <div class="legal-note">
+            Not legal advice!
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- FORUM SECTION -->
+
+<section class="forum">
+
+    <h2 class="forum-intro">
+        Welcome to the forum<br>
+        dedicated to those involved<br>
+        in platfrom employment
+    </h2>
+
+
+    <div class="stakeholder-grid">
+
+        <!-- PLATFORM WORKERS -->
+
+        <div class="stakeholder-card">
+
+            <h2>Platform workers</h2>
+
+            <p>
+                Insist on recognizing them as employees, complain about lack of protections, hold strikes.
+            </p>
+
+            <button class="card-button"
+                onclick="location.href='workers.html'">
+
+                Read their<br>opinion
+                <span>➜</span>
+
+            </button>
+
+        </div>
+
+
+        <!-- PLATFORMS -->
+
+        <div class="stakeholder-card">
+
+            <h2>Platforms</h2>
+
+            <p>
+                Argue that public demonstrations are not necessary and tha platform workers cannot be recognized as employees.
+            </p>
+
+            <button class="card-button"
+                onclick="location.href='platforms.html'">
+
+                Read their<br>opinion
+                <span>➜</span>
+
+            </button>
+
+        </div>
+
+
+        <!-- LEGISLATORS -->
+
+        <div class="stakeholder-card">
+
+            <h2>Legislators</h2>
+
+            <p>
+                Want to find balance between the rights of workers and flourishment of platform business.
+            </p>
+
+            <button class="card-button"
+                onclick="location.href='legislators.html'">
+
+                Read their<br>opinion
+                <span>➜</span>
+
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- PROJECT MATERIALS -->
+
+<section class="materials">
+    <video autoplay muted loop src="bgvid.mp4"></video>
+
+
+    <div class="materials-layout">
+
+        <!-- LEFT COLUMN: POSTS -->
+
+        <div class="posts-column">
+
+            <h2 class="poscolhed">Project materials</h2>
+
+            <!-- POST 1 -->
+
+            <article class="post">
+
+                <div class="post-meta">
+
+                    <span>
+                        Posted by: someone@kimep.kz
+                    </span>
+
+                    <span class="post-time">
+                        5 min read
+                    </span>
+
+                </div>
+
+                <h2>Inquiry essay</h2>
+
+                <p class="post-description">
+                    A study of clashing perspectives of legal scholars
+                    about platform employment in Kazakhstan.
+                    Read more...
+                </p>
+
+                <div class="post-footer">
+
+                    <div class="post-actions">
+
+                        <img src="heart.png" class="reaction like">
+
+                        <img src="dislike.png" class="reaction dislike">
+
+                        <img src="share.png" class="reaction">
+
+                    </div>
+
+                    <form class="comment-form"
+                        onsubmit="submitComment(event)">
+
+                        <input
+                            type="text"
+                            placeholder="Comment..."
+                            aria-label="Leave a comment"
+                        >
+
+                    </form>
+
+                </div>
+
+            </article>
+
+
+            <!-- POST 2 -->
+
+            <article class="post">
+
+                <div class="post-meta">
+
+                    <span>
+                        Posted by: someone@kimep.kz
+                    </span>
+
+                    <span class="post-time">
+                        6 min read
+                    </span>
+
+                </div>
+
+                <h2>Argument paper</h2>
+
+                <p class="post-description">
+                    A policy proposal piece on the need for a new law
+                    that would govern platform employment,
+                    recognizing labor relationships between platform
+                    workers and platforms.
+                </p>
+
+                <div class="post-footer">
+
+                    <div class="post-actions">
+
+                        <img src="heart.png" class="reaction like">
+
+                        <img src="dislike.png" class="reaction dislike">
+
+                        <img src="share.png" class="reaction">
+
+                    </div>
+
+                    <form class="comment-form"
+                        onsubmit="submitComment(event)">
+
+                        <input
+                            type="text"
+                            placeholder="Comment..."
+                            aria-label="Leave a comment"
+                        >
+
+                    </form>
+
+                </div>
+
+            </article>
+
+
+            <!-- POST 3 -->
+
+            <article class="post">
+
+                <div class="post-meta">
+
+                    <span>
+                        Posted by: someone@kimep.kz
+                    </span>
+
+                    <span class="post-time">
+                        0 min read
+                    </span>
+
+                </div>
+
+                <h2>Further reading</h2>
+
+                <p class="post-description">
+                    A list of useful scholarly sources and
+                    recommended additional readings on the issue.
+                </p>
+
+                <div class="post-footer">
+
+                    <div class="post-actions">
+
+                        <img src="heart.png" class="reaction like">
+
+                        <img src="dislike.png" class="reaction dislike">
+
+                        <img src="share.png" class="reaction">
+
+                    </div>
+
+                    <form class="comment-form"
+                        onsubmit="submitComment(event)">
+
+                        <input
+                            type="text"
+                            placeholder="Comment..."
+                            aria-label="Leave a comment"
+                        >
+
+                    </form>
+
+                </div>
+
+            </article>
+
+
+        </div>
+
+
+        <!-- RIGHT COLUMN -->
+
+        <div class="topics-column">
+
+
+            <!-- TOPICS -->
+
+            <div class="topics-card">
+
+                <h2>Topics</h2>
+
+                <div class="hashtags">
+
+                    <span class="hashtag">#platforms</span>
+
+                    <span class="hashtag">#law</span>
+
+                    <span class="hashtag">#economy</span>
+
+                    <span class="hashtag">#rights</span>
+
+                    <span class="hashtag">#social-protection</span>
+
+                    <span class="hashtag">#platforms</span>
+
+                </div>
+
+            </div>
+
+
+            <!-- DUMMY CARD -->
+
+            <div class="dummy-card">
+
+                <h2>Some title</h2>
+
+                <p>
+                    Lorem ipsum lorem ipsum lorem ipsum
+                    lorem ipsum lorem ipsum lorem ipsum
+                    lorem ipsum
+                </p>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</section>
+
+
+</body>
+</html>
