@@ -18,6 +18,11 @@
     --page-scale: 1;
 }
 
+.scroll-fade-item {
+    will-change: transform, opacity;
+    transform-origin: center center;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -845,7 +850,7 @@ body {
 
     <div>
 
-        <h1>
+        <h1 class='scroll-fade-item'>
             <span class="hero-yellow hero-step-1">
                 What's with
             </span>
@@ -874,14 +879,14 @@ body {
 
 <section class="forum">
 
-    <h2 class="forum-intro">
+    <h2 class="forum-intro scroll-fade-item">
         Welcome to the forum<br>
         dedicated to those involved<br>
         in platfrom employment
     </h2>
 
 
-    <div class="stakeholder-grid">
+    <div class="stakeholder-grid scroll-fade-item">
 
         <!-- PLATFORM WORKERS -->
 
@@ -962,11 +967,11 @@ body {
 
         <div class="posts-column">
 
-            <h2 class="poscolhed">Project materials</h2>
+            <h2 class="poscolhed scroll-fade-item">Project materials</h2>
 
             <!-- POST 1 -->
 
-            <a class="post">
+            <a class="post scroll-fade-item">
 
                 <div class="post-meta">
 
@@ -1018,7 +1023,7 @@ body {
 
             <!-- POST 2 -->
 
-            <a class="post">
+            <a class="post scroll-fade-item">
 
                 <div class="post-meta">
 
@@ -1071,7 +1076,7 @@ body {
 
             <!-- POST 3 -->
 
-            <a class="post">
+            <a class="post scroll-fade-item">
 
                 <div class="post-meta">
 
@@ -1130,7 +1135,7 @@ body {
 
             <!-- TOPICS -->
 
-            <div class="topics-card">
+            <div class="topics-card scroll-fade-item">
 
                 <h2>Topics</h2>
 
@@ -1155,7 +1160,7 @@ body {
 
             <!-- DUMMY CARD -->
 
-            <div class="dummy-card">
+            <div class="dummy-card scroll-fade-item">
 
                 <h2>Some title</h2>
 
@@ -1173,7 +1178,67 @@ body {
     </div>
 
 </section>
+<script>
 
+
+/* ===================================
+   SCROLL SCALE & OPACITY EFFECT
+=================================== */
+
+const scrollItems = document.querySelectorAll('.scroll-fade-item');
+
+function updateScrollEffects() {
+    const windowHeight = window.innerHeight;
+    // Зона у краев экрана (в пикселях), в которой начинается уменьшение и затухание.
+    // 0.35 означает 35% от высоты экрана сверху и 35% снизу.
+    const fadeZone = windowHeight * 0.5; 
+    const minScale = 0.9; // Минимальный размер (75% от оригинала)
+
+    scrollItems.forEach(item => {
+        const rect = item.getBoundingClientRect();
+        
+        // Используем центр элемента для плавного и симметричного расчета
+        const elementCenter = rect.top + rect.height / 2;
+        
+        let progress = 1; // 1 = полностью видим и в полном размере
+
+        // Если центр элемента приближается к ВЕРХНЕМУ краю экрана
+        if (elementCenter < fadeZone) {
+            // Когда центр доходит до 0 (верхний край), progress станет 0
+            progress = Math.max(0, elementCenter / fadeZone);
+        } 
+        // Если центр элемента приближается к НИЖНЕМУ краю экрана
+        else if (elementCenter > windowHeight - fadeZone) {
+            const distanceFromBottom = windowHeight - elementCenter;
+            progress = Math.max(0, distanceFromBottom / fadeZone);
+        }
+
+        // Применяем значения пропорционально прогрессу
+        const currentScale = minScale + (1 - minScale) * progress;
+        const currentOpacity = progress*2;
+
+        item.style.transform = `scale(${currentScale})`;
+        item.style.opacity = currentOpacity;
+    });
+}
+
+// Используем requestAnimationFrame для максимальной плавности при скролле
+let isScrolling = false;
+window.addEventListener('scroll', () => {
+    if (!isScrolling) {
+        window.requestAnimationFrame(() => {
+            updateScrollEffects();
+            isScrolling = false;
+        });
+        isScrolling = true;
+    }
+}, { passive: true });
+
+// Пересчитываем при изменении размера окна и при первой загрузке
+window.addEventListener('resize', updateScrollEffects);
+updateScrollEffects();
+
+</script>
 
 </body>
 </html>
